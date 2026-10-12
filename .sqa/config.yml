@@ -1,0 +1,72 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: fix/updatego
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/cessda/cessda.cdc.aggregator.client:
+      branch: main
+      repo: https://github.com/cessda/cessda.cdc.aggregator.client
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/cessda/cessda.cdc.aggregator.client git:
+        commands:
+        - /usr/bin/env sh .sqa/script.tan_fearless_caribou.sh
+        container: qc.acc_peach_delighted_shark
+  QC.Doc:
+    repos:
+      github.com/cessda/cessda.cdc.aggregator.client find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.cherry_amused_emu.sh
+        container: qc.doc_apricot_decisive_macaw
+      github.com/cessda/cessda.cdc.aggregator.client git:
+        commands:
+        - /usr/bin/env sh .sqa/script.isabelline_fearless_baboon.sh
+        container: qc.doc_flint_peaceful_sphinx
+      github.com/cessda/cessda.cdc.aggregator.client markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.ultramarine_resilient_stork.sh
+        container: qc.doc_papaya_peppy_orca
+  QC.Lic:
+    repos:
+      github.com/cessda/cessda.cdc.aggregator.client licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.cadet_jubilant_kirin.sh
+        container: qc.lic_pine_reliable_turtle
+  QC.Sec:
+    repos:
+      github.com/cessda/cessda.cdc.aggregator.client bandit:
+        commands:
+        - /usr/bin/env sh .sqa/script.hunter_harmonious_pelican.sh
+        container: qc.sec_iris_open_osprey
+  QC.Sty:
+    repos:
+      github.com/cessda/cessda.cdc.aggregator.client flake8:
+        commands:
+        - /usr/bin/env sh .sqa/script.thunder_silly_echidna.sh
+        container: qc.sty_frost_humorous_dormouse
+      github.com/cessda/cessda.cdc.aggregator.client hadolint:
+        commands:
+        - /usr/bin/env sh .sqa/script.vermilion_aware_ferret.sh
+        container: qc.sty_eggplant_skeptical_ibis
+      github.com/cessda/cessda.cdc.aggregator.client jsonlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.orchid_unique_bison.sh
+        container: qc.sty_peony_wise_groundhog
+  QC.Uni:
+    repos:
+      github.com/cessda/cessda.cdc.aggregator.client pytest:
+        commands:
+        - /usr/bin/env sh .sqa/script.cerise_polite_roc.sh
+        container: qc.uni_obsidian_careful_octopus
+  QC.Ver:
+    repos:
+      github.com/cessda/cessda.cdc.aggregator.client get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.viridian_content_eagle.sh
+        container: qc.ver_sepia_driven_raccoon
+timeout: 5400
